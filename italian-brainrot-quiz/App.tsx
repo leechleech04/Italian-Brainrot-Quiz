@@ -1,13 +1,11 @@
-import styled from 'styled-components/native';
-import { Text } from 'react-native';
-
-const Container = styled.View``;
+import { NavigationContainer } from '@react-navigation/native';
+import Tabs from './navigation/Tabs';
 
 const App = () => {
   return (
-    <Container>
-      <Text>Italian Brainrot Quiz</Text>
-    </Container>
+    <NavigationContainer>
+      <Tabs />
+    </NavigationContainer>
   );
 };
 

@@ -13,8 +13,8 @@ const Tabs = () => {
       screenOptions={{
         headerShown: false,
         tabBarStyle: { backgroundColor: colors.beige },
-        tabBarActiveTintColor: colors.blue,
-        tabBarInactiveTintColor: colors.blue,
+        tabBarActiveTintColor: colors.orange,
+        tabBarInactiveTintColor: colors.orange,
       }}
     >
       <Tab.Screen
@@ -49,9 +49,9 @@ const Tabs = () => {
         options={{
           tabBarIcon: ({ focused, color, size }) => {
             return focused ? (
-              <Ionicons name="help" size={size} color={color} />
+              <Ionicons name="school" size={size} color={color} />
             ) : (
-              <Ionicons name="help-outline" size={size} color={color} />
+              <Ionicons name="school-outline" size={size} color={color} />
             );
           },
         }}

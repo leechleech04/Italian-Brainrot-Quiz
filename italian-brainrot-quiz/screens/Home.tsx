@@ -8,8 +8,21 @@ const Container = styled.View`
   background-color: ${colors.blue};
 `;
 
+const Title = styled.Text`
+  font-size: 60px;
+  color: ${colors.beige};
+  text-align: center;
+  font-family: 'PoetsenOne-Regular';
+`;
+
 const Home = () => {
-  return <Container></Container>;
+  return (
+    <Container>
+      <Title>
+        Italian{'\n'}Brainrot{'\n'}Quiz
+      </Title>
+    </Container>
+  );
 };
 
 export default Home;

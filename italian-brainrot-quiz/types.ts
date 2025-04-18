@@ -5,5 +5,7 @@ export type RootStackParamList = {
   CardDetail: {
     source: ImageSourcePropType;
     title: string;
+    ability: string[];
+    motive: string[];
   };
 };

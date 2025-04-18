@@ -20,7 +20,12 @@ const CardScreen = () => {
       <FlatList
         data={ImageSources}
         renderItem={({ item }) => (
-          <Card source={item.source} title={item.name} />
+          <Card
+            source={item.source}
+            title={item.name}
+            ability={item.ability}
+            motive={item.motive}
+          />
         )}
         ItemSeparatorComponent={() => <Separator />}
       />

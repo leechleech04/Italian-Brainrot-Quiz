@@ -25,7 +25,7 @@ const Image = styled.Image`
 `;
 
 const CardDetail = ({ route }: { route: any }) => {
-  const { source, title } = route.params;
+  const { source, title, ability, motive } = route.params;
 
   return (
     <Container>

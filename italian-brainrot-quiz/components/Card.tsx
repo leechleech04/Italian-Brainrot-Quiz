@@ -35,9 +35,13 @@ const CardTitle = styled.Text`
 const Card = ({
   source,
   title,
+  ability,
+  motive,
 }: {
   source: ImageSourcePropType;
   title: string;
+  ability: string[];
+  motive: string[];
 }) => {
   const navigation = useNavigation<CardNavigationProp>();
 
@@ -47,6 +51,8 @@ const Card = ({
         navigation.navigate('CardDetail', {
           source,
           title,
+          ability,
+          motive,
         });
       }}
     >

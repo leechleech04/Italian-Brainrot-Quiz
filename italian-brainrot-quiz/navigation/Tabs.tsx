@@ -4,6 +4,7 @@ import Card from '../screens/CardScreen';
 import Quiz from '../screens/QuizScreen';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../colors';
+import Stacks from './Stacks';
 
 const Tab = createBottomTabNavigator();
 
@@ -32,7 +33,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Card"
-        component={Card}
+        component={Stacks}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
             return focused ? (

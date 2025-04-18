@@ -1,6 +1,11 @@
 import styled from 'styled-components/native';
 import colors from '../colors';
 import { ImageSourcePropType } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../types';
+
+type CardNavigationProp = StackNavigationProp<RootStackParamList, 'CardDetail'>;
 
 const Container = styled.Pressable`
   background-color: ${colors.blue};
@@ -14,6 +19,7 @@ const CardImage = styled.Image`
   width: 120px;
   height: 120px;
   border-radius: 20px;
+  align-self: center;
 `;
 
 const CardTitle = styled.Text`
@@ -33,8 +39,17 @@ const Card = ({
   source: ImageSourcePropType;
   title: string;
 }) => {
+  const navigation = useNavigation<CardNavigationProp>();
+
   return (
-    <Container>
+    <Container
+      onPress={() => {
+        navigation.navigate('CardDetail', {
+          source,
+          title,
+        });
+      }}
+    >
       <CardImage source={source} />
       <CardTitle>{title}</CardTitle>
     </Container>

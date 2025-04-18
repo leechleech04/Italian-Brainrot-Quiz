@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
-import Card from '../screens/Card';
-import Quiz from '../screens/Quiz';
+import Card from '../screens/CardScreen';
+import Quiz from '../screens/QuizScreen';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../colors';
 

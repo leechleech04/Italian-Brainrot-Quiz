@@ -2,26 +2,26 @@ export default [
   {
     source: require('./assets/italian-brainrot/BallerinaCappuccina.jpg'),
     name: 'Ballerina Cappuccina',
-    ability: ['ballet'],
-    motive: ['Ballerina', 'cappuccino'],
+    ability: ['Ballet'],
+    motive: ['Ballerina', 'Cappuccino'],
   },
   {
     source: require('./assets/italian-brainrot/BlueberrinniOctopussini.jpg'),
     name: 'Blueberrinni Octopussini',
-    ability: ['Scaffolding attack', 'fast swimming'],
-    motive: ['Blueberry', 'octopus'],
+    ability: ['Scaffolding attack', 'Fast swimming'],
+    motive: ['Blueberry', 'Octopus'],
   },
   {
     source: require('./assets/italian-brainrot/BobritoBandito.jpg'),
     name: 'Bobrito Bandito',
-    ability: ['mass shooting'],
-    motive: ['Beaver', 'Thompson submachine gun', 'gangster', 'mafia'],
+    ability: ['Mass shooting'],
+    motive: ['Beaver', 'Thompson submachine gun', 'Gangster', 'Mafia'],
   },
   {
     source: require('./assets/italian-brainrot/BombardiereLucertola.jpg'),
     name: 'Bombardiere Lucertola',
-    ability: ['Bomber', 'flight', 'camouflage'],
-    motive: ['Bomber', 'lizard'],
+    ability: ['Bomber', 'Flight', 'Camouflage'],
+    motive: ['Bomber', 'Lizard'],
   },
   {
     source: require('./assets/italian-brainrot/BombardiroCrocodilo.jpg'),
@@ -139,7 +139,7 @@ export default [
   },
   {
     source: require('./assets/italian-brainrot/SvininoBombondino.jpg'),
-    name: 'SvininoBombondino',
+    name: 'Svinino Bombondino',
     ability: ['self-destruct'],
     motive: ['Pig', 'bomb'],
   },

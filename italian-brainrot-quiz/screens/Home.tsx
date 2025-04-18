@@ -13,7 +13,7 @@ const Container = styled(LinearGradient).attrs({
 })`
   flex: 1;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   background-color: ${colors.blue};
 `;
 
@@ -26,31 +26,23 @@ const Title = styled.Text`
 `;
 
 const Image = styled.Image`
-  width: ${height / 7}px;
-  height: ${height / 7}px;
   border-radius: 20px;
-  border: 5px solid ${colors.beige};
-  margin: 10px;
+  border: 3px solid ${colors.beige};
+  width: ${width / 4}px;
+  height: ${width / 4}px;
 `;
 
 const ImageContainer = styled.View`
-  position: absolute;
-  top: 30px;
-  align-items: center;
-  height: 30%;
-`;
-
-const ImageRow = styled.View`
   flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
 `;
 
 const DefinitionButton = styled.Pressable`
-  position: absolute;
   background-color: ${colors.orange};
   border: 5px solid ${colors.beige};
   border-radius: 20px;
-  padding: 10px;
-  bottom: 200px;
+  padding: 10px 20px;
 `;
 
 const DefinitionButtonText = styled.Text`
@@ -85,6 +77,7 @@ const DefinitionModalText = styled.Text`
 const CloseModalButton = styled.Pressable`
   background-color: ${colors.orange};
   border-radius: 20px;
+  margin: 20px;
   padding: 10px;
 `;
 
@@ -96,6 +89,10 @@ const Home = () => {
   const secondImageScale = useRef(new Animated.Value(0)).current;
   const thirdImageScale = useRef(new Animated.Value(0)).current;
   const fourthImageScale = useRef(new Animated.Value(0)).current;
+  const fifthImageScale = useRef(new Animated.Value(0)).current;
+  const sixthImageScale = useRef(new Animated.Value(0)).current;
+  const seventhImageScale = useRef(new Animated.Value(0)).current;
+  const eighthImageScale = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     Animated.sequence([
@@ -125,6 +122,26 @@ const Home = () => {
           bounciness: 15,
           useNativeDriver: true,
         }),
+        Animated.spring(fifthImageScale, {
+          toValue: 1,
+          bounciness: 15,
+          useNativeDriver: true,
+        }),
+        Animated.spring(sixthImageScale, {
+          toValue: 1,
+          bounciness: 15,
+          useNativeDriver: true,
+        }),
+        Animated.spring(seventhImageScale, {
+          toValue: 1,
+          bounciness: 15,
+          useNativeDriver: true,
+        }),
+        Animated.spring(eighthImageScale, {
+          toValue: 1,
+          bounciness: 15,
+          useNativeDriver: true,
+        }),
       ]),
     ]).start();
   }, []);
@@ -132,54 +149,78 @@ const Home = () => {
   return (
     <Container>
       <ImageContainer>
-        <ImageRow>
-          <Pressable>
-            <Animated.View
-              style={{
-                transform: [{ scale: firstImageScale }],
-              }}
-            >
-              <Image
-                source={require('../assets/italian-brainrot/TralaleroTralala.jpg')}
-              />
-            </Animated.View>
-          </Pressable>
-          <Pressable>
-            <Animated.View
-              style={{
-                transform: [{ scale: secondImageScale }],
-              }}
-            >
-              <Image
-                source={require('../assets/italian-brainrot/BombardiroCrocodilo.jpg')}
-              />
-            </Animated.View>
-          </Pressable>
-        </ImageRow>
-        <ImageRow>
-          <Pressable>
-            <Animated.View
-              style={{
-                transform: [{ scale: thirdImageScale }],
-              }}
-            >
-              <Image
-                source={require('../assets/italian-brainrot/TungTungTungTungTungTungTungTungTungSahur.jpg')}
-              />
-            </Animated.View>
-          </Pressable>
-          <Pressable>
-            <Animated.View
-              style={{
-                transform: [{ scale: fourthImageScale }],
-              }}
-            >
-              <Image
-                source={require('../assets/italian-brainrot/LirilìLarilà.jpg')}
-              />
-            </Animated.View>
-          </Pressable>
-        </ImageRow>
+        <Animated.View
+          style={{
+            transform: [{ scale: firstImageScale }],
+          }}
+        >
+          <Image
+            source={require('../assets/italian-brainrot/TralaleroTralala.jpg')}
+          />
+        </Animated.View>
+        <Animated.View
+          style={{
+            transform: [{ scale: secondImageScale }],
+          }}
+        >
+          <Image
+            source={require('../assets/italian-brainrot/BombardiroCrocodilo.jpg')}
+          />
+        </Animated.View>
+        <Animated.View
+          style={{
+            transform: [{ scale: thirdImageScale }],
+          }}
+        >
+          <Image
+            source={require('../assets/italian-brainrot/TungTungTungTungTungTungTungTungTungSahur.jpg')}
+          />
+        </Animated.View>
+        <Animated.View
+          style={{
+            transform: [{ scale: fourthImageScale }],
+          }}
+        >
+          <Image
+            source={require('../assets/italian-brainrot/LirilìLarilà.jpg')}
+          />
+        </Animated.View>
+        <Animated.View
+          style={{
+            transform: [{ scale: fifthImageScale }],
+          }}
+        >
+          <Image
+            source={require('../assets/italian-brainrot/BonecaAmbalabu.jpg')}
+          />
+        </Animated.View>
+        <Animated.View
+          style={{
+            transform: [{ scale: sixthImageScale }],
+          }}
+        >
+          <Image
+            source={require('../assets/italian-brainrot/BrrBrrPatapim.jpg')}
+          />
+        </Animated.View>
+        <Animated.View
+          style={{
+            transform: [{ scale: seventhImageScale }],
+          }}
+        >
+          <Image
+            source={require('../assets/italian-brainrot/ChimpanziniBananini.jpg')}
+          />
+        </Animated.View>
+        <Animated.View
+          style={{
+            transform: [{ scale: eighthImageScale }],
+          }}
+        >
+          <Image
+            source={require('../assets/italian-brainrot/BombombiniGusini.jpg')}
+          />
+        </Animated.View>
       </ImageContainer>
       <Pressable
         onPress={() => {
@@ -208,14 +249,12 @@ const Home = () => {
           </Title>
         </Animated.View>
       </Pressable>
-      <DefinitionButton>
-        <DefinitionButtonText
-          onPress={() => {
-            setIsModalVisible(true);
-          }}
-        >
-          What is Italian Brainrot?
-        </DefinitionButtonText>
+      <DefinitionButton
+        onPress={() => {
+          setIsModalVisible(true);
+        }}
+      >
+        <DefinitionButtonText>What is Italian Brainrot?</DefinitionButtonText>
       </DefinitionButton>
       <DefinitionModal
         visible={isModalVisible}
@@ -226,10 +265,10 @@ const Home = () => {
           <DefinitionModalTitle>Italian Brainrot</DefinitionModalTitle>
           <DefinitionModalText>
             "Italian brainrot" is an internet slang term describing a specific
-            type of online content trend. It involves combining crude
+            type of online content trend.{'\n'}It involves combining crude
             AI-generated images with very loose Italian phrases to create absurd
-            and humorous videos. The term is used to refer to the concept of
-            low-quality, mind-numbing content, often associated with the
+            and humorous videos.{'\n'}The term is used to refer to the concept
+            of low-quality, mind-numbing content, often associated with the
             negative effects of excessive online consumption.
           </DefinitionModalText>
           <CloseModalButton

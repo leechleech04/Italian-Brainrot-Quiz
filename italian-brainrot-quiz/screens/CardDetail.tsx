@@ -24,6 +24,18 @@ const Image = styled.Image`
   margin: 20px 0;
 `;
 
+const Detail = styled.Text`
+  font-size: 24px;
+  font-family: 'PoetsenOne-Regular';
+  padding: 5px 20px;
+`;
+
+const DetailTitle = styled.Text`
+  font-size: 30px;
+  font-family: 'PoetsenOne-Regular';
+  padding: 10px;
+`;
+
 const CardDetail = ({ route }: { route: any }) => {
   const { source, title, ability, motive } = route.params;
 
@@ -31,6 +43,10 @@ const CardDetail = ({ route }: { route: any }) => {
     <Container>
       <Title>{title}</Title>
       <Image source={source} />
+      <DetailTitle>Abilities</DetailTitle>
+      <Detail>{ability.join(', ')}</Detail>
+      <DetailTitle>Motive</DetailTitle>
+      <Detail>{motive.join(', ')}</Detail>
     </Container>
   );
 };

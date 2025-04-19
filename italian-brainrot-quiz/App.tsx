@@ -14,9 +14,12 @@ const App = () => {
     'PoetsenOne-Regular': require('./assets/fonts/PoetsenOne-Regular.ttf'),
   });
 
-  const [imageLoaded, imageError] = useAssets(
-    ImageSources.map((item) => item.source)
-  );
+  const [imageLoaded, imageError] = useAssets([
+    ...ImageSources.map((item) => item.source),
+    require('./assets/SahurQuiz.png'),
+    require('./assets/TralaQuiz.png'),
+    require('./assets/splash-icon.png'),
+  ]);
 
   useEffect(() => {
     const prepareResources = async () => {

@@ -1,6 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
-import Quiz from '../screens/QuizScreen';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../colors';
 import CardStacks from './CardStacks';

@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../types';
 
-type QuizNavigationProp = StackNavigationProp<RootStackParamList, 'QuizScreen'>;
+type QuizNavigationProp = StackNavigationProp<RootStackParamList>;
 
 const Container = styled(LinearGradient).attrs({
   colors: [colors.blue, colors.skyBlue],

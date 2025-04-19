@@ -4,7 +4,8 @@ import colors from '../colors';
 import { useEffect, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { Dimensions } from 'react-native';
-import { keyframes } from 'styled-components';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 const { width, height } = Dimensions.get('window');
 
@@ -49,8 +50,8 @@ const HelpModalCloseButtonText = styled.Text`
 
 const HelpButton = styled.Pressable`
   position: absolute;
-  top: 40px;
-  right: 20px;
+  top: ${height / 20}px;
+  right: ${width / 10}px;
 `;
 
 const QuizNumber = styled.Text`
@@ -109,8 +110,60 @@ const OptionText = styled.Text`
   font-family: 'PoetsenOne-Regular';
 `;
 
+const Score = styled.Text`
+  font-size: 24px;
+  margin-left: 20px;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  color: ${colors.skyBlue};
+  font-family: 'PoetsenOne-Regular';
+`;
+
+const EndModal = styled.Modal``;
+
+const EndModalContainer = styled.View`
+  background-color: ${colors.blue};
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+const EndModalText = styled.Text`
+  font-size: 36px;
+  color: ${colors.beige};
+  text-align: center;
+  font-family: 'PoetsenOne-Regular';
+`;
+
+const EndModalCloseButton = styled.Pressable`
+  background-color: ${colors.orange};
+  border-radius: 20px;
+  padding: 10px 30px;
+  margin-top: 50px;
+`;
+
+const EndModalCloseButtonText = styled.Text`
+  font-size: 24px;
+  color: ${colors.beige};
+  text-align: center;
+  font-family: 'PoetsenOne-Regular';
+`;
+
+const EndModalScore = styled.Text`
+  font-size: 60px;
+  color: ${colors.beige};
+  text-align: center;
+  font-family: 'PoetsenOne-Regular';
+  margin: 10px;
+`;
+
 const ImageAndNameQuiz = () => {
-  const [isModalVisible, setIsModalVisible] = useState(true);
+  const navigation = useNavigation<StackNavigationProp<any>>();
+
+  const [isHelpModalVisible, setIsHelpModalVisible] = useState(true);
+  const [isEndModalVisible, setIsEndModalVisible] = useState(false);
+
   const [quizNumber, setQuizNumber] = useState(1);
   const [characterIndex, setCharacterIndex] = useState(
     Math.floor(Math.random() * ImageSources.length)
@@ -122,6 +175,7 @@ const ImageAndNameQuiz = () => {
   const [correctAnswer, setCorrectAnswer] = useState(
     Math.floor(Math.random() * 4) + 1
   );
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     const generateUniqueOptions = () => {
@@ -145,21 +199,29 @@ const ImageAndNameQuiz = () => {
           usedIndices.add(randomIndex);
         }
       }
-
       setOptionIndex(newOptions);
     };
 
     generateUniqueOptions();
   }, [characterIndex]);
 
-  const setNewQuestion = () => {
+  const setNewQuestion = (selectedOption: number | null) => {
+    if (selectedOption !== null) {
+      if (selectedOption === correctAnswer) {
+        setScore((prevScore) => prevScore + 1);
+      }
+    }
+    if (quizNumber >= 10) {
+      setIsEndModalVisible(true);
+      return;
+    }
     const newCharacterIndex = Math.floor(Math.random() * ImageSources.length);
     if (newCharacterIndex !== characterIndex) {
       setCharacterIndex(newCharacterIndex);
       setIsImageQuestion(Math.floor(Math.random() * 2) === 0);
       setQuizNumber(quizNumber + 1);
     } else {
-      setNewQuestion();
+      setNewQuestion(null);
     }
   };
 
@@ -168,7 +230,7 @@ const ImageAndNameQuiz = () => {
       <HelpModal
         animationType="slide"
         transparent={false}
-        visible={isModalVisible}
+        visible={isHelpModalVisible}
       >
         <HelpModalContainer>
           <HelpModalText>
@@ -177,16 +239,35 @@ const ImageAndNameQuiz = () => {
           </HelpModalText>
           <HelpModalCloseButton
             onPress={() => {
-              setIsModalVisible(false);
+              setIsHelpModalVisible(false);
             }}
           >
             <HelpModalCloseButtonText>Close</HelpModalCloseButtonText>
           </HelpModalCloseButton>
         </HelpModalContainer>
       </HelpModal>
+      <EndModal
+        animationType="slide"
+        transparent={false}
+        visible={isEndModalVisible}
+      >
+        <EndModalContainer>
+          <EndModalText>Quiz finished! You got</EndModalText>
+          <EndModalScore>{score}</EndModalScore>
+          <EndModalText>out of 10 correct!</EndModalText>
+          <EndModalCloseButton
+            onPress={() => {
+              setIsEndModalVisible(false);
+              navigation.goBack();
+            }}
+          >
+            <EndModalCloseButtonText>Close</EndModalCloseButtonText>
+          </EndModalCloseButton>
+        </EndModalContainer>
+      </EndModal>
       <HelpButton
         onPress={() => {
-          setIsModalVisible(true);
+          setIsHelpModalVisible(true);
         }}
       >
         <Ionicons name="help-circle-outline" size={48} color={colors.beige} />
@@ -203,7 +284,7 @@ const ImageAndNameQuiz = () => {
             <TextOptionBox
               key={key}
               onPress={() => {
-                setNewQuestion();
+                setNewQuestion(Number(key));
               }}
             >
               <OptionText>
@@ -216,8 +297,9 @@ const ImageAndNameQuiz = () => {
         <OptionContainer>
           {Object.entries(optionIndex).map(([key, value]) => (
             <ImageOptionBox
+              key={key}
               onPress={() => {
-                setNewQuestion();
+                setNewQuestion(Number(key));
               }}
             >
               <OptionImage key={key} source={ImageSources[value].source} />
@@ -225,6 +307,7 @@ const ImageAndNameQuiz = () => {
           ))}
         </OptionContainer>
       )}
+      <Score>{score} correct</Score>
     </Container>
   );
 };

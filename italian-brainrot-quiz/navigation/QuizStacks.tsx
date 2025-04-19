@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import QuizScreen from '../screens/QuizScreen';
 import ImageAndNameQuiz from '../screens/ImageAndNameQuiz';
-import AbilityAndMotiveQuiz from './AbilityAndMotiveQuiz';
+import AbilityAndMotiveQuiz from '../screens/AbilityAndMotiveQuiz';
 
 const Stack = createStackNavigator();
 

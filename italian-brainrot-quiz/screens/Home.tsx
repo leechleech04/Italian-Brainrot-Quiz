@@ -71,6 +71,7 @@ const DefinitionModalTitle = styled.Text`
 
 const DefinitionModalText = styled.Text`
   font-size: 20px;
+  line-height: 28px;
   margin: 20px;
 `;
 

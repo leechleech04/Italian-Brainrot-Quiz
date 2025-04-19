@@ -1,6 +1,11 @@
 import styled from 'styled-components/native';
 import colors from '../colors';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../types';
+
+type QuizNavigationProp = StackNavigationProp<RootStackParamList, 'QuizScreen'>;
 
 const Container = styled(LinearGradient).attrs({
   colors: [colors.blue, colors.skyBlue],
@@ -36,13 +41,23 @@ const QuizButtonText = styled.Text`
 `;
 
 const QuizScreen = () => {
+  const navigation = useNavigation<QuizNavigationProp>();
+
   return (
     <Container>
       <Title>Quiz</Title>
-      <QuizButton>
+      <QuizButton
+        onPress={() => {
+          navigation.navigate('ImageAndNameQuiz');
+        }}
+      >
         <QuizButtonText>Image and Name Quiz</QuizButtonText>
       </QuizButton>
-      <QuizButton>
+      <QuizButton
+        onPress={() => {
+          navigation.navigate('AbilityAndMotiveQuiz');
+        }}
+      >
         <QuizButtonText>Ability and Motive Quiz</QuizButtonText>
       </QuizButton>
     </Container>

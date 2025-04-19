@@ -5,7 +5,7 @@ import AbilityAndMotiveQuiz from './AbilityAndMotiveQuiz';
 
 const Stack = createStackNavigator();
 
-const CardStacks = () => {
+const QuizStacks = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -13,10 +13,13 @@ const CardStacks = () => {
       }}
     >
       <Stack.Screen name="QuizScreen" component={QuizScreen} />
-      <Stack.Screen name="CardDetail" component={ImageAndNameQuiz} />
-      <Stack.Screen name="CardDetail" component={AbilityAndMotiveQuiz} />
+      <Stack.Screen name="ImageAndNameQuiz" component={ImageAndNameQuiz} />
+      <Stack.Screen
+        name="AbilityAndMotiveQuiz"
+        component={AbilityAndMotiveQuiz}
+      />
     </Stack.Navigator>
   );
 };
 
-export default CardStacks;
+export default QuizStacks;

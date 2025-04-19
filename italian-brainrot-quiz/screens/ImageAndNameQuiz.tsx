@@ -1,11 +1,12 @@
 import styled from 'styled-components/native';
 import ImageSources from '../ImageSources';
 import colors from '../colors';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { Animated } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
@@ -209,6 +210,33 @@ const ImageAndNameQuiz = () => {
     if (selectedOption !== null) {
       if (selectedOption === correctAnswer) {
         setScore((prevScore) => prevScore + 1);
+        Animated.sequence([
+          Animated.timing(checkMarkScale, {
+            toValue: 1,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.delay(500),
+          Animated.timing(checkMarkScale, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+        ]).start();
+      } else {
+        Animated.sequence([
+          Animated.timing(closeMarkScale, {
+            toValue: 1,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+          Animated.delay(500),
+          Animated.timing(closeMarkScale, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: true,
+          }),
+        ]).start();
       }
     }
     if (quizNumber >= 10) {
@@ -224,6 +252,9 @@ const ImageAndNameQuiz = () => {
       setNewQuestion(null);
     }
   };
+
+  const checkMarkScale = useRef(new Animated.Value(0)).current;
+  const closeMarkScale = useRef(new Animated.Value(0)).current;
 
   return (
     <Container>
@@ -308,6 +339,23 @@ const ImageAndNameQuiz = () => {
         </OptionContainer>
       )}
       <Score>{score} correct</Score>
+      <Animated.View
+        style={{
+          position: 'absolute',
+          transform: [{ scale: checkMarkScale }],
+        }}
+      >
+        <Ionicons name="checkmark-circle" size={160} color="green" />
+      </Animated.View>
+
+      <Animated.View
+        style={{
+          position: 'absolute',
+          transform: [{ scale: closeMarkScale }],
+        }}
+      >
+        <Ionicons name="close-circle" size={160} color="red" />
+      </Animated.View>
     </Container>
   );
 };

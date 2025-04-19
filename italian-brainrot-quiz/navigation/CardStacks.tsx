@@ -4,7 +4,7 @@ import CardDetail from '../screens/CardDetail';
 
 const Stack = createStackNavigator();
 
-const Stacks = () => {
+const CardStacks = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -17,4 +17,4 @@ const Stacks = () => {
   );
 };
 
-export default Stacks;
+export default CardStacks;

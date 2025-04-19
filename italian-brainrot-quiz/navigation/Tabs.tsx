@@ -1,10 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
-import Card from '../screens/CardScreen';
 import Quiz from '../screens/QuizScreen';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../colors';
-import Stacks from './Stacks';
+import CardStacks from './CardStacks';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +32,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Card"
-        component={Stacks}
+        component={CardStacks}
         options={{
           tabBarIcon: ({ focused, color, size }) => {
             return focused ? (

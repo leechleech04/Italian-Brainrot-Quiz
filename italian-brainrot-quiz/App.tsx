@@ -4,21 +4,31 @@ import Tabs from './navigation/Tabs';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
+import { Asset, useAssets } from 'expo-asset';
+import ImageSources from './ImageSources';
 
 SplashScreen.preventAutoHideAsync();
 
 const App = () => {
-  const [loaded, error] = useFonts({
+  const [fontLoaded, fontError] = useFonts({
     'PoetsenOne-Regular': require('./assets/fonts/PoetsenOne-Regular.ttf'),
   });
 
-  useEffect(() => {
-    if (loaded || error) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded, error]);
+  const [imageLoaded, imageError] = useAssets(
+    ImageSources.map((item) => item.source)
+  );
 
-  if (!loaded && !error) {
+  useEffect(() => {
+    const prepareResources = async () => {
+      if (fontLoaded && imageLoaded) {
+        await SplashScreen.hideAsync();
+      }
+    };
+
+    prepareResources();
+  }, [fontLoaded, imageLoaded]);
+
+  if (!fontLoaded || !imageLoaded) {
     return null;
   }
 

@@ -53,12 +53,8 @@ const QuizScreen = () => {
       >
         <QuizButtonText>Image and Name Quiz</QuizButtonText>
       </QuizButton>
-      <QuizButton
-        onPress={() => {
-          navigation.navigate('AbilityAndMotiveQuiz');
-        }}
-      >
-        <QuizButtonText>Ability and Motive Quiz</QuizButtonText>
+      <QuizButton style={{ backgroundColor: colors.blue }}>
+        <QuizButtonText>Coming Soon!</QuizButtonText>
       </QuizButton>
     </Container>
   );

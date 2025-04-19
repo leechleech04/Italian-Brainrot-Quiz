@@ -4,7 +4,7 @@ import { Animated, Dimensions, Pressable } from 'react-native';
 import { useEffect, useRef, useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 const Container = styled(LinearGradient).attrs({
   colors: [colors.skyBlue, colors.blue, colors.skyBlue],

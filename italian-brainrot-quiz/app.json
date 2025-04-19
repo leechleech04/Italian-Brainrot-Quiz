@@ -34,7 +34,8 @@
             "node_modules/@expo-google-fonts/inter/PoetsenOne-Regular.ttf"
           ]
         }
-      ]
+      ],
+      "expo-asset"
     ]
   }
 }
